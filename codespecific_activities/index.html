@@ -1,0 +1,1863 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Department of Electrical and Electronic">
+      
+      
+      
+        <link rel="canonical" href="https://www.gcu.ac.uk/cebe/codespecific_activities/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
+    
+    
+      
+        <title>Code-specific - System Design using FPGA</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.edf004c2.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+2:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font:"Baloo 2";--md-code-font:""}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#code-specific-objectives-and-activities" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="System Design using FPGA" class="md-header__button md-logo" aria-label="System Design using FPGA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            System Design using FPGA
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Code-specific
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://gitlab.cern.ch/abpcomputing/abpcpweb/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitLab
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        Objectives and activities
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../guides/softguide/" class="md-tabs__link">
+        Guidelines and Assignments
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../guides/mkdocs_site/" class="md-tabs__link">
+        Websites & CAD tools
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../guides/openstack/" class="md-tabs__link">
+        Evaluation
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../guides/sshtunnel/" class="md-tabs__link">
+        References
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="System Design using FPGA" class="md-nav__button md-logo" aria-label="System Design using FPGA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    System Design using FPGA
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://gitlab.cern.ch/abpcomputing/abpcpweb/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitLab
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Objectives and activities
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Objectives and activities" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Objectives and activities
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Code-specific
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Code-specific
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mad-x" class="md-nav__link">
+    MAD-X
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mad-ng" class="md-nav__link">
+    MAD-NG
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tracking-tools" class="md-nav__link">
+    Tracking tools
+  </a>
+  
+    <nav class="md-nav" aria-label="Tracking tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xtrack" class="md-nav__link">
+    Xtrack
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xpart" class="md-nav__link">
+    Xpart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sixdesk" class="md-nav__link">
+    SixDesk
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mask-pymask" class="md-nav__link">
+    mask / pymask
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools-for-collective-effects" class="md-nav__link">
+    Tools for collective effects
+  </a>
+  
+    <nav class="md-nav" aria-label="Tools for collective effects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#combi" class="md-nav__link">
+    COMBI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyheadtail" class="md-nav__link">
+    PyHEADTAIL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypic-becomes-xfields" class="md-nav__link">
+    PyPIC (becomes Xfields)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyecloud-pyparis" class="md-nav__link">
+    PyECLOUD, PyPARIS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delphi" class="md-nav__link">
+    DELPHI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyssd" class="md-nav__link">
+    PySSD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyradise" class="md-nav__link">
+    PyRADISE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#impedance-toolbox" class="md-nav__link">
+    Impedance ToolBox
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iw2d-and-tlwall" class="md-nav__link">
+    IW2D and TLWall
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rftrack" class="md-nav__link">
+    RFTrack
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beam-cooling-tools" class="md-nav__link">
+    Beam cooling tools
+  </a>
+  
+    <nav class="md-nav" aria-label="Beam cooling tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interface" class="md-nav__link">
+    Interface
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linear-collider-tools" class="md-nav__link">
+    Linear collider tools
+  </a>
+  
+    <nav class="md-nav" aria-label="Linear collider tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#placet-placet2" class="md-nav__link">
+    Placet / Placet2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guinea-pig" class="md-nav__link">
+    Guinea-Pig
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#luminosity-modeling-tools" class="md-nav__link">
+    Luminosity modeling tools
+  </a>
+  
+    <nav class="md-nav" aria-label="Luminosity modeling tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lumimod" class="md-nav__link">
+    LumiMod
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beam-source-modeling" class="md-nav__link">
+    Beam source modeling
+  </a>
+  
+    <nav class="md-nav" aria-label="Beam source modeling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onix" class="md-nav__link">
+    ONIX
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fcc-ee-developments" class="md-nav__link">
+    FCC-ee developments
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../housekeeping/" class="md-nav__link">
+        Housekeeping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notes_from_meetings/" class="md-nav__link">
+        Notes from meetings
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Guidelines and Assignments
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Guidelines and Assignments" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Guidelines and Assignments
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Guidelines
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Guidelines" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Guidelines
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/softguide/" class="md-nav__link">
+        Guidelines for ABP software
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/python_packages/" class="md-nav__link">
+        Guidelines for python tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Websites & CAD tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Websites & CAD tools" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Websites & CAD tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/mkdocs_site/" class="md-nav__link">
+        Create a MkDocs website (like this one)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/readthedocs/" class="md-nav__link">
+        Sphinx - RTD documentation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Evaluation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Evaluation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Evaluation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1">
+          Virtual Machines
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Virtual Machines" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Virtual Machines
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/openstack/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/openstackCC7/" class="md-nav__link">
+        CentOS CC7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/openstackCS8/" class="md-nav__link">
+        CentOS CS8
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          References
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="References" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          References
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/sshtunnel/" class="md-nav__link">
+        SSH tunnel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/vim_autocomplete/" class="md-nav__link">
+        Configure Vim for Python development
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/m1_macbook/" class="md-nav__link">
+        M1 MacBook experience
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mad-x" class="md-nav__link">
+    MAD-X
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mad-ng" class="md-nav__link">
+    MAD-NG
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tracking-tools" class="md-nav__link">
+    Tracking tools
+  </a>
+  
+    <nav class="md-nav" aria-label="Tracking tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xtrack" class="md-nav__link">
+    Xtrack
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xpart" class="md-nav__link">
+    Xpart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sixdesk" class="md-nav__link">
+    SixDesk
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mask-pymask" class="md-nav__link">
+    mask / pymask
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools-for-collective-effects" class="md-nav__link">
+    Tools for collective effects
+  </a>
+  
+    <nav class="md-nav" aria-label="Tools for collective effects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#combi" class="md-nav__link">
+    COMBI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyheadtail" class="md-nav__link">
+    PyHEADTAIL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypic-becomes-xfields" class="md-nav__link">
+    PyPIC (becomes Xfields)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyecloud-pyparis" class="md-nav__link">
+    PyECLOUD, PyPARIS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delphi" class="md-nav__link">
+    DELPHI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyssd" class="md-nav__link">
+    PySSD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyradise" class="md-nav__link">
+    PyRADISE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#impedance-toolbox" class="md-nav__link">
+    Impedance ToolBox
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iw2d-and-tlwall" class="md-nav__link">
+    IW2D and TLWall
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rftrack" class="md-nav__link">
+    RFTrack
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beam-cooling-tools" class="md-nav__link">
+    Beam cooling tools
+  </a>
+  
+    <nav class="md-nav" aria-label="Beam cooling tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interface" class="md-nav__link">
+    Interface
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linear-collider-tools" class="md-nav__link">
+    Linear collider tools
+  </a>
+  
+    <nav class="md-nav" aria-label="Linear collider tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#placet-placet2" class="md-nav__link">
+    Placet / Placet2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guinea-pig" class="md-nav__link">
+    Guinea-Pig
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#luminosity-modeling-tools" class="md-nav__link">
+    Luminosity modeling tools
+  </a>
+  
+    <nav class="md-nav" aria-label="Luminosity modeling tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lumimod" class="md-nav__link">
+    LumiMod
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beam-source-modeling" class="md-nav__link">
+    Beam source modeling
+  </a>
+  
+    <nav class="md-nav" aria-label="Beam source modeling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onix" class="md-nav__link">
+    ONIX
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fcc-ee-developments" class="md-nav__link">
+    FCC-ee developments
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://gitlab.cern.ch/abpcomputing/abpcpweb/blob/master/docs/codespecific_activities.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="code-specific-objectives-and-activities">Code-specific objectives and activities</h1>
+<h3 id="mad-x"><em>MAD-X</em></h3>
+<p><em>Involved persons: Tobias, Laurent</em></p>
+<ul>
+<li>Improve support for misaligned and overlapping elements</li>
+<li>Support cpymad for python workflows</li>
+<li>Improve save/reload capabilities (full mad-x state)</li>
+</ul>
+<details class="note">
+<summary>Milestones and timeline</summary>
+<ul>
+<li>Timescale for objectives mentioned above: 2021</li>
+</ul>
+</details>
+<details class="warning">
+<summary>Pending bug-fixes (required for ABP activities)</summary>
+<ul>
+<li>Calculation of crabcavity R and T matrix not correct in MADX and PTC. <ul>
+<li>Required to include crab cavities in the HL-LHC sequence!</li>
+<li>Some functionality duplication between crabcavity and RFmultipole. We might want to  to port all the functionality in RFMultipole and call it from CrabCavity for backward compatibility.</li>
+<li>Related GitHub issue <a href="https://github.com/MethodicalAcceleratorDesign/MAD-X/issues/981">here</a></li>
+</ul>
+</li>
+<li>Current master segfaults on a long hl-lhc script when compiled with 'make'<ul>
+<li>Related GitHub issue <a href="https://github.com/MethodicalAcceleratorDesign/MAD-X/issues/982">here</a></li>
+</ul>
+</li>
+</ul>
+</details>
+<h3 id="mad-ng"><em>MAD-NG</em></h3>
+<p><em>Involved persons: Laurent</em></p>
+<ul>
+<li>Focus will be on building know how and develop tools for non-linear normal forms analysis and advanced tracking maps (see <a href="https://indico.cern.ch/event/991905/attachments/2178071/">recommendations of MAD-NG review</a>).<ul>
+<li>The long-term goal is to match the capabilities and performance of PTC and possibly do better.</li>
+</ul>
+</li>
+<li>Provide python interface for integration with other ABP and operation tools (LSA, pyheadtail, sixtracklib, pymask)  </li>
+</ul>
+<details class="note">
+<summary>Milestones and timeline</summary>
+<ul>
+<li>See <a href="https://indico.cern.ch/event/991905/contributions/4172235">presentation at MAD-NG forum</a></li>
+</ul>
+</details>
+<h2 id="tracking-tools">Tracking tools</h2>
+<h3 id="xtrack"><em>Xtrack</em></h3>
+<p>[NAME IS TEMPORARY]</p>
+<p><em>Involved people: Riccardo, Martin, Kostas, Frederik, Tobias, Gianni, Roderik</em></p>
+<ul>
+<li>Based on the sixtracklib experience, build a modular library (Xtrack) that performs tracking on CPUs and GPUs</li>
+<li>Requirements:<ol>
+<li>Possibility of working in combination with other tools (PyHEADTAIL, PyPIC) for collective effects studies (instabilities, space-charge, e-cloud)</li>
+<li>Should be able to replace Sixtrack for conventional single-particle studies</li>
+<li>Run efficiently with HTCondor and BOINC (requires numerical reproducibility)</li>
+<li>Adopt design choices that facilitate future maintenance and development, as well as adaptation to new technologies (e.g. GPU standards) -&gt; keep the code slim</li>
+<li>Allow the integration of advanced collimation capabilities (advanced aperture models, scattering, with FLUKA, tracking of fragments)</li>
+<li>Be extendable to model lepton rings.</li>
+</ol>
+</li>
+</ul>
+<details class="note">
+<summary>Design choices</summary>
+<ul>
+<li>To keep a slim and flexible code, we choose to manage the memory and the simulation through python.</li>
+<li>We will use pyopencl to build a first version, then possibly extend to cupy and numba-cuda.</li>
+<li>Some modifications in <a href="#PyPIC">PyPIC</a> and <a href="#PyHEADTAIL">PyHEADTAIL</a> might be necessary.</li>
+<li>Description of the particles ensemble might be moved to a separate library (<a href="#Xpart">Xpart</a>) and shared with PyHEADTAIL.</li>
+</ul>
+</details>
+<details class="note">
+<summary>Short-term tasks</summary>
+<ul>
+<li>Build a first skeleton version.</li>
+<li>Collect a set of examples representative of all the use-cases, to make sure that the design covers all needs:<ul>
+<li>Examples for DA and lifetime studies already available</li>
+<li>We need a set of examples  illustrating che collimation us-cases (using the SixTrack)</li>
+<li>We need an example for the space charge studies (sixtracklib, pyheadtail, pypic)</li>
+</ul>
+</li>
+</ul>
+</details>
+<details class="note">
+<summary>Milestones and timeline</summary>
+<ul>
+<li>Skeleton code with main features Feb 2021</li>
+<li>Collection of use-cases (e.g. space-charge, collimation) to be done in Q1-Q2 2021</li>
+<li>
+<p>By end of 2021 ABP-INC should be able to migrate their studies:</p>
+<ul>
+<li>requires all features available in sixtracklib 1.0, interface with PyPIC, dynamic elements (noise)</li>
+</ul>
+</li>
+<li>
+<p>Other features (aiming at matching SixTrack capabilities that we need to retain): 2022</p>
+<ul>
+<li>For collimation features, the timescale will be defined only after reviewing all the use cases (might need to go beyond 2022, depending on allocated resources).</li>
+</ul>
+</li>
+</ul>
+</details>
+<h3 id="xpart"><em>Xpart</em></h3>
+<p>[NAME IS TEMPORARY]</p>
+<p><em>Involved persons: Guido, Foteini, Kostas, Lotta</em></p>
+<ul>
+<li>Concentrate in a single library tools for the generation of particle ensembles. Capabilities are presently scattered over:<ul>
+<li>SixDesk</li>
+<li>pysixdesk</li>
+<li>sixtrack (recent work by Riccardo, Tobias and co.)</li>
+<li>pysixtrack (Kostas' code)</li>
+<li>PyHEADTAIL (advanced longitudinal matching)</li>
+</ul>
+</li>
+<li>This library should define a general and flexible particle description that can be imported and used in PyHEADTAIL, in the new tracking library and for other usages.</li>
+<li>Probably we can use PyHEADTAIL's Particles class as a starting point.</li>
+<li>Remember that masked access needs to be available for bunch slicing.</li>
+<li>Extraction of statistical properties (average position, r.m.s. sizes, optical functions, emittances) should be implemented (ported from PyHEADTAIL).</li>
+</ul>
+<details class="note">
+<summary>Milestones and timeline</summary>
+<ul>
+<li>Timescale for objectives mentioned above: 2021</li>
+</ul>
+</details>
+<h3 id="sixdesk"><em>SixDesk</em></h3>
+<p><em>Involved persons: Guido, Frederik</em></p>
+<ul>
+<li>Restructure the tool to ease maintenance and further development (re-use as much as possible the <a href="https://github.com/SixTrack/pysixdesk">pysixdesk</a> code).</li>
+<li>Integrate new developments (pymask, Xtrack)</li>
+<li>Improve usage flexibility.</li>
+<li>Explore the usage of containers (<a href="https://sylabs.io/singularity/">singularity</a> or <a href="https://www.docker.com">docker</a>) on BOINC for more flexible simulations (e.g. including python)</li>
+<li>Move generation of particles distribution to a separate library usable for other applications (synergy with PyHEADTAIL).</li>
+</ul>
+<details class="note">
+<summary>Milestones and timeline</summary>
+<ul>
+<li>Timescale for objectives mentioned above: 2021-2022</li>
+</ul>
+</details>
+<details class="note">
+<summary>Updates</summary>
+<ul>
+<li>An example with some python helpers (prepared by Sofia) can be found <a href="https://github.com/sterbini/sixdesk_example">here</a></li>
+<li>A possible functionality breakdown can be found <a href="https://codimd.web.cern.ch/s/L8ANqV-Rd">here</a>, together with some notes.</li>
+</ul>
+</details>
+<h3 id="mask-pymask"><em>mask / pymask</em></h3>
+<p><em>Involved persons: Guido, Sofia Kostoglou, NLD fellow (with Massimo)</em></p>
+<ul>
+<li>Extend to ions</li>
+<li>Strengthen automatic and interactive checks on error-routines, optics, knobs, etc.</li>
+<li>Validate beam 4 implementation.</li>
+<li>Plan transition to pymask for all applications.</li>
+</ul>
+<details class="note">
+<summary>Milestones and timeline</summary>
+<ul>
+<li>Timescale for objectives mentioned above: 2021-2022<ul>
+<li>Ion extension by Spring</li>
+<li>Validation of beam 4 and first set of checks by end-2021 </li>
+</ul>
+</li>
+</ul>
+</details>
+<details class="warning">
+<summary>Pending bug-fixes (required for ABP activities)</summary>
+<ul>
+<li>Presently not working with machine imperfections! (Frederik is on it)</li>
+</ul>
+</details>
+<h2 id="tools-for-collective-effects">Tools for collective effects</h2>
+<h3 id="combi"><em>COMBI</em></h3>
+<p><em>Involved persons: Xavier, Sondre</em></p>
+<ul>
+<li>Port to python the top-level layer of COMBI that manages the interaction schedule, in order to profit from other libraries having a python interface (PyHEADTAIL, Xtrack)<ul>
+<li>Build a ”proof-of-principle” code to test and validate the main functionalities (e.g. asynchronous MPI calls)</li>
+<li>Then move to a well structured python library (reusing as much as possible modules from PyHEADTAIL)</li>
+<li>Expose to python features of COMBI that are not already available in other python packages (e.g. BTF, noise modeling).</li>
+</ul>
+</li>
+</ul>
+<details class="note">
+<summary>Milestones and timeline</summary>
+<ul>
+<li>Timescale for objectives mentioned above: 2021-2022<ul>
+<li>”proof-of-principle” code with main functionalities in 2021</li>
+</ul>
+</li>
+</ul>
+</details>
+<h3 id="pyheadtail"><em>PyHEADTAIL</em></h3>
+<p><em>Involved persons: Lotta</em></p>
+<ul>
+<li>Build a solid set of examples and tests covering the entire library</li>
+<li>Improve documentation, introduce a simple “Getting started guide”</li>
+<li>Finalize merge into master of the coupled-bunch branch</li>
+<li>Generation and description of particles ensembles should be moved to a separated library <a href="#Xpart">Xpart</a> (shared with the <a href="#Xtrack">Xtrack</a> tracking library)</li>
+<li>Integrate with Xtrack library for advanced non-linear tracking.</li>
+<li>Introduce multithread CPU parallelization (numba, or cython), required for performance in COMBI-like simulations</li>
+<li>Review, document and update GPU features (need to stay compatible with <a href="#Xtrack">Xtrack</a>).</li>
+<li>Integrate coasting beam capabilities (development from Nicolo').</li>
+</ul>
+<details class="note">
+<summary>Milestones and timeline</summary>
+<ul>
+<li>Timescale for objectives mentioned above: 2021-2022<ul>
+<li>merge of coupled-bunch branch, example set, and documentation review to be done in 2021.</li>
+<li>ESRF would like to use the coupled bunch mode in python 3 (needs merged version). Tentatively this should be possible in June.</li>
+</ul>
+</li>
+</ul>
+</details>
+<h3 id="pypic-becomes-xfields"><em>PyPIC (becomes Xfields)</em></h3>
+<p><em>Involved persons: Gianni</em></p>
+<ul>
+<li>Restructure the library to better integrate CPU-based FD solvers and GPU-based FFT solvers.</li>
+<li>Foresee combined usage with <a href="Xtrack">Xtrack</a> for space-charge simulations.</li>
+<li>Move to standard python-package structure (pip installable).</li>
+</ul>
+<details class="note">
+<summary>Milestones and timeline</summary>
+<ul>
+<li>Timescale for objectives mentioned above: 2021</li>
+</ul>
+</details>
+<details class="note">
+<summary>Design ideas and constraints</summary>
+<p>Details here: <a href="https://github.com/giadarol/PyPIC/issues/1">https://github.com/giadarol/PyPIC/issues/1</a></p>
+</details>
+<details class="note">
+<summary>Updates</summary>
+<ul>
+<li>Development being done in this GitHub branch: <a href="https://github.com/giadarol/PyPIC/tree/reorganize">https://github.com/giadarol/PyPIC/tree/reorganize</a><ul>
+<li>Started sketching the structure</li>
+</ul>
+</li>
+<li>Space-charge equations collected at: <a href="https://github.com/giadarol/PyPIC/tree/reorganize/doc">https://github.com/giadarol/PyPIC/tree/reorganize/doc</a></li>
+</ul>
+</details>
+<h3 id="pyecloud-pyparis"><em>PyECLOUD, PyPARIS</em></h3>
+<p><em>Involved persons: Gianni, Lotta</em></p>
+<ul>
+<li>Move to standard python-package structure (pip installable).</li>
+</ul>
+<details class="note">
+<summary>Milestones and timeline</summary>
+<ul>
+<li>Timescale for objectives mentioned above: 2021</li>
+</ul>
+</details>
+<h3 id="delphi"><em>DELPHI</em></h3>
+<p><em>Involved persons: Nicolas, Gianni, Sebastien, Sofia Johannesson</em></p>
+<ul>
+<li>Restructure and simplify the code (more flexible interface, more pythonic, easier to bypass convergence tests, etc.), </li>
+<li>Move to standard python-package structure (pip installable)</li>
+<li>Integrate different matrix calculation from temporary eDELPHI package (to handle e-cloud, detuning impedances, short wakes)</li>
+<li>Improve integration with PySSD</li>
+</ul>
+<details class="note">
+<summary>Milestones and timeline</summary>
+<ul>
+<li>Timescale for objectives mentioned above: 2021</li>
+</ul>
+</details>
+<details class="note">
+<summary>Design constraints and first ideas (2020-01-15)</summary>
+<p>Requirements:</p>
+<ul>
+<li>We need the possibility of enlarging the matrix for convergence checks</li>
+<li>We should be able to reuse quantities when possible (e.g. the full matrix for "intensity" scans or different synchrotron tunes, or parts for the calculation). Some ingredients break the reusability, the code should check automatically.</li>
+</ul>
+<p>Design ideas:</p>
+<ul>
+<li>Make a base "coupling matrix" class with the methods that are shared (e.g. <code>compute_complex_tune_shifts(rescale_factors)</code>). Such a base class will depend on the beam distribution and on the chosen base functions but not on the description of the collective effects forces.</li>
+<li>Then we make children classes with specialized implementations for the different descriptions of the coherent forces: impedance sum from DELPHI, sine responses from eDELPHI, but also Dirac-delta response, specialized versions for fast-decaying wakes and resonators.</li>
+<li>We should be able to combine matrices.</li>
+<li>We could try to express all cases (or most cases) in general form like:
+ $$
+ {\Large
+ M_{l,m,l',m'} = K_\text{coh}\sum_n A_n R_{l,m,n} \tilde{R}_{l',m',n}}
+ $$
+ The different child classes will have different ways of computing <span class="arithmatex"><span class="MathJax_Preview">\Large A_n</span><script type="math/tex">\Large A_n</script></span> (which is the impedance in the case of Delphi), <span class="arithmatex"><span class="MathJax_Preview">\Large R_{l,m,n}</span><script type="math/tex">\Large R_{l,m,n}</script></span>, <span class="arithmatex"><span class="MathJax_Preview">\Large \tilde{R}_{l',m',n}</span><script type="math/tex">\Large \tilde{R}_{l',m',n}</script></span>. We would keep these quantities in memory to test different matrix truncations...</li>
+<li>Using python memorizers might help, but we would lose the possibility of working with numpy arrays, which could impact performance.</li>
+</ul>
+</details>
+<details class="note">
+<summary>Updates</summary>
+<ul>
+<li>Working in in <a href="https://gitlab.cern.ch/IRIS/DELPHI/-/tree/merged_eDELPHI">https://gitlab.cern.ch/IRIS/DELPHI/-/tree/merged_eDELPHI</a></li>
+<li>The Harmonic Response Matrix from eDELPHI has been ported and tested.<ul>
+<li>Need to move generic functionalities to base class (done to some extent).</li>
+<li>Need to separate the part coming from detuning with longitudinal amplitude into a separate class (done)</li>
+</ul>
+</li>
+<li>Implement matrix extension for convergence checks.</li>
+<li><code>n_l</code>, <code>n_m</code>, <code>n_l_pos</code> could be properties</li>
+<li>At that point we should review the conventions (e.g. Qs or Q_s?, do we use f or omega, tunes... -&gt; we should be consistent across the code).</li>
+<li>Then move to impedance, damper etc.</li>
+</ul>
+<p>Questions:
+ - Maybe move de parameters in a dictionary and not have them as lose members of the object. Easier to make copies of objects.
+ - We need a slim physics manual for notations and conventions.</p>
+</details>
+<details class="note">
+<summary>Plan (16/06/2021)</summary>
+<ul>
+<li>Detuning extension (Gianni) – end of August (can be done in parallel or later than the second point)</li>
+<li>Make some separate tests on impedance sum - check best strategy time wise (Nicolas) – end of August</li>
+<li>If FactorizedMatrix is the way to go, generalize its implementation with functions of “m” for R and R_tilde (Nicolas/Gianni)</li>
+<li>Impedance Matrix implementation (Nicolas)<ul>
+<li>Do it first in numpy/scipy</li>
+<li>Write it in the latex doc</li>
+<li>(Profile C++ vs Numba)</li>
+</ul>
+</li>
+<li>Unit tests (Nicolas)</li>
+<li>Examples (Nicolas/Gianni/Sofia/Sebastien)</li>
+<li>Documentation (Nicolas/Gianni)<ul>
+<li>Docstrings</li>
+<li>Readthedocs (doc on installation &amp; use)</li>
+</ul>
+</li>
+<li>(Attempt to parallelize on radial modes) (Nicolas)</li>
+<li>Convergence strategy (Nicolas/Gianni)</li>
+</ul>
+</details>
+<h3 id="pyssd"><em>PySSD</em></h3>
+<p><em>Involved persons: Xavier</em></p>
+<ul>
+<li>Move to standard python-package structure (pip installable)</li>
+<li>Improve integration with DELPHI</li>
+</ul>
+<details class="note">
+<summary>Milestones and timeline</summary>
+<ul>
+<li>Timescale for objectives mentioned above: 2021</li>
+</ul>
+</details>
+<h3 id="pyradise"><em>PyRADISE</em></h3>
+<p><em>Involved persons: Xavier, Sondre</em></p>
+<ul>
+<li>Prepare startup examples.</li>
+</ul>
+<details class="note">
+<summary>Milestones and timeline</summary>
+<ul>
+<li>Timescale for objectives mentioned above: 2021</li>
+</ul>
+</details>
+<h3 id="impedance-toolbox"><em>Impedance ToolBox</em></h3>
+<p><em>Involved persons: Nicolas, Markus</em></p>
+<ul>
+<li>Develop a python package for the management of Accelerator Impedance Models.</li>
+<li>Use standard python-package structure (pip installable)</li>
+<li>The code should be interfaced to IW2D and TLWall</li>
+<li>Make sure that we cover specificities of all accelerators of interest (including injectors and possibly FCC)</li>
+</ul>
+<details class="note">
+<summary>Milestones and timeline</summary>
+<ul>
+<li>Timescale for objectives mentioned above: 2021</li>
+</ul>
+</details>
+<h3 id="iw2d-and-tlwall"><em>IW2D and TLWall</em></h3>
+<p><em>Involved persons: Nicolas, Markus, Carlo</em></p>
+<ul>
+<li>Move to standard python-package structure (pip installable)</li>
+</ul>
+<details class="note">
+<summary>Milestones and timeline</summary>
+<ul>
+<li>Timescale for objectives mentioned above: 2021</li>
+</ul>
+</details>
+<h3 id="rftrack"><em>RFTrack</em></h3>
+<p><em>Involved persons: Andrea</em></p>
+<ul>
+<li>Support and development for identified use cases (positron sources, very low-energy machines, bunch compressors, electron cooling, RFQs, flash medical accelerator, Compton scattering)</li>
+<li>Implementation of CSR </li>
+<li>Expose individual components (interpolators, integrators) for combined usage with other tools (possibly via python)</li>
+</ul>
+<details class="note">
+<summary>Milestones and timeline</summary>
+<ul>
+<li>Timescale for objectives mentioned above: 2021</li>
+</ul>
+</details>
+<h2 id="beam-cooling-tools">Beam cooling tools</h2>
+<h3 id="interface"><em>Interface</em></h3>
+<p><em>Involved persons: Davide, Andrea</em></p>
+<ul>
+<li>Develop a common interface to use and compare different beam cooling codes (e.g. betacool and RFTrack)</li>
+<li>Further develop integration with other modeling tools (e.g. PyHEADTAIL, new tracking library)</li>
+</ul>
+<details class="note">
+<summary>Milestones and timeline</summary>
+<ul>
+<li>Timescale for objectives mentioned above: 2021-2022</li>
+</ul>
+</details>
+<h2 id="linear-collider-tools">Linear collider tools</h2>
+<h3 id="placet-placet2"><em>Placet / Placet2</em></h3>
+<p><em>Involved persons: Andrea</em></p>
+<ul>
+<li>Integrate in Placet 2 the missing features from Placet<ul>
+<li>Missing CLIC-specific physics to be implemented (e.g. Power Extraction and Transfer Structures)</li>
+<li>Sliced beam model to be implemented</li>
+</ul>
+</li>
+<li>Improve integration with other tools (PyHEADTAIL, XTrack), e.g. expose CSR modeling</li>
+</ul>
+<details class="note">
+<summary>Milestones and timeline</summary>
+<ul>
+<li>Timescale for objectives mentioned above: 2021-2022. In particular:<ul>
+<li>Missing CLIC-specific physics should come in 2021</li>
+<li>Sliced model should come in 2022</li>
+</ul>
+</li>
+</ul>
+</details>
+<h3 id="guinea-pig"><em>Guinea-Pig</em></h3>
+<p><em>Involved persons: Andrea, Daniel</em></p>
+<ul>
+<li>Focus on C++ implementation if possible</li>
+<li>Extensions for FCC-ee being discussed</li>
+</ul>
+<h2 id="luminosity-modeling-tools">Luminosity modeling tools</h2>
+<h3 id="lumimod"><em>LumiMod</em></h3>
+<p><em>Involved persons: Guido, Gianni, Ilias</em></p>
+<ul>
+<li>Review and document the code </li>
+<li>Move to standard python-package structure (pip installable)</li>
+</ul>
+<details class="note">
+<summary>Milestones and timeline</summary>
+<ul>
+<li>Timescale for objectives mentioned above: 2021</li>
+</ul>
+</details>
+<h2 id="beam-source-modeling">Beam source modeling</h2>
+<h3 id="onix"><em>ONIX</em></h3>
+<p><em>Involved persons: Anna, Jacques</em></p>
+<ul>
+<li>Adaptation to CERN’s H- source</li>
+</ul>
+<details class="note">
+<summary>Milestones and timeline</summary>
+<ul>
+<li>Timescale for objectives mentioned above: 2022</li>
+</ul>
+</details>
+<h2 id="fcc-ee-developments">FCC-ee developments</h2>
+<p><em>Involved persons (from ABP): Riccardo, Xavier, Gianni, Tobias, Frank Schmidt, Daniel, Frank Zimmermann</em></p>
+<ul>
+<li>Synergy with code development project led by EPFL</li>
+<li>ABP involved on three main fronts:<ul>
+<li>Development of optics tools</li>
+<li>Modeling of interaction regions (e.g. Beamstrahlung)</li>
+<li>Collimation studies</li>
+</ul>
+</li>
+</ul>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Home
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../housekeeping/" class="md-footer__link md-footer__link--next" aria-label="Next: Housekeeping" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Housekeeping
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 - Amin Sahebi
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/AminSahebi" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "search.highlight"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e1a181d9.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

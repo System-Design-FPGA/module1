@@ -1,0 +1,2572 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Department of Electrical and Electronic">
+      
+      
+      
+        <link rel="canonical" href="https://www.gcu.ac.uk/cebe/notes_from_meetings/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
+    
+    
+      
+        <title>Notes from meetings - System Design using FPGA</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.edf004c2.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+2:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font:"Baloo 2";--md-code-font:""}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#notes-from-abp-computing-meetings" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="System Design using FPGA" class="md-header__button md-logo" aria-label="System Design using FPGA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            System Design using FPGA
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Notes from meetings
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://gitlab.cern.ch/abpcomputing/abpcpweb/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitLab
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../codespecific_activities/" class="md-tabs__link md-tabs__link--active">
+        Objectives and activities
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../guides/softguide/" class="md-tabs__link">
+        Guidelines and Assignments
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../guides/mkdocs_site/" class="md-tabs__link">
+        Websites & CAD tools
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../guides/openstack/" class="md-tabs__link">
+        Evaluation
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../guides/sshtunnel/" class="md-tabs__link">
+        References
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="System Design using FPGA" class="md-nav__button md-logo" aria-label="System Design using FPGA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    System Design using FPGA
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://gitlab.cern.ch/abpcomputing/abpcpweb/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitLab
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Objectives and activities
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Objectives and activities" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Objectives and activities
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codespecific_activities/" class="md-nav__link">
+        Code-specific
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../housekeeping/" class="md-nav__link">
+        Housekeeping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Notes from meetings
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Notes from meetings
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#22-october-2021" class="md-nav__link">
+    22 October 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="22 October 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes-from-the-meeting" class="md-nav__link">
+    Notes from the meeting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-september-2021" class="md-nav__link">
+    17 September 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="17 September 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes-from-the-meeting_1" class="md-nav__link">
+    Notes from the meeting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-september-2021" class="md-nav__link">
+    3 September 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="3 September 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes-from-the-meeting_2" class="md-nav__link">
+    Notes from the meeting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_1" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-july-2021" class="md-nav__link">
+    2 July 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="2 July 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes-from-the-meeting_3" class="md-nav__link">
+    Notes from the meeting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_2" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-june-2021" class="md-nav__link">
+    25 June 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="25 June 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes-from-the-meeting_4" class="md-nav__link">
+    Notes from the meeting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-june-2021" class="md-nav__link">
+    18 June 2021
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-june-2021" class="md-nav__link">
+    11 June 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="11 June 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes-from-the-meeting_5" class="md-nav__link">
+    Notes from the meeting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_3" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-june-2021" class="md-nav__link">
+    4 June 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="4 June 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#points-to-follow-up" class="md-nav__link">
+    Points to follow up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-may-2021" class="md-nav__link">
+    7 May 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="7 May 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_4" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#30-april-2021" class="md-nav__link">
+    30 April 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="30 April 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_1" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_5" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-april-2021" class="md-nav__link">
+    23 April 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="23 April 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_2" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_6" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-april-2021" class="md-nav__link">
+    16 April 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="16 April 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_3" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-april-2021" class="md-nav__link">
+    9 April 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="9 April 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_4" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_7" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-march-2021" class="md-nav__link">
+    26 March 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="26 March 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_5" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_8" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-march-2021" class="md-nav__link">
+    19 March 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="19 March 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_6" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-related-to-css-services" class="md-nav__link">
+    Points related to CSS services
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-march-2021" class="md-nav__link">
+    12 March 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="12 March 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_7" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_9" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-march-2021" class="md-nav__link">
+    5 March 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="5 March 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_8" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_10" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-february-2021" class="md-nav__link">
+    26 February 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="26 February 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#seminar" class="md-nav__link">
+    Seminar
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-february-2021" class="md-nav__link">
+    19 February 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="19 February 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_9" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_11" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-february-2021" class="md-nav__link">
+    12 February  2021
+  </a>
+  
+    <nav class="md-nav" aria-label="12 February  2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_10" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_12" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-february-2021" class="md-nav__link">
+    5 February  2021
+  </a>
+  
+    <nav class="md-nav" aria-label="5 February  2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_11" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_13" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#29-january-2021" class="md-nav__link">
+    29 January 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="29 January 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_12" class="md-nav__link">
+    Information**
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_14" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-january-2021" class="md-nav__link">
+    22 January 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="22 January 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_15" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Guidelines and Assignments
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Guidelines and Assignments" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Guidelines and Assignments
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Guidelines
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Guidelines" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Guidelines
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/softguide/" class="md-nav__link">
+        Guidelines for ABP software
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/python_packages/" class="md-nav__link">
+        Guidelines for python tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Websites & CAD tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Websites & CAD tools" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Websites & CAD tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/mkdocs_site/" class="md-nav__link">
+        Create a MkDocs website (like this one)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/readthedocs/" class="md-nav__link">
+        Sphinx - RTD documentation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Evaluation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Evaluation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Evaluation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1">
+          Virtual Machines
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Virtual Machines" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Virtual Machines
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/openstack/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/openstackCC7/" class="md-nav__link">
+        CentOS CC7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/openstackCS8/" class="md-nav__link">
+        CentOS CS8
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          References
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="References" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          References
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/sshtunnel/" class="md-nav__link">
+        SSH tunnel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/vim_autocomplete/" class="md-nav__link">
+        Configure Vim for Python development
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/m1_macbook/" class="md-nav__link">
+        M1 MacBook experience
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#22-october-2021" class="md-nav__link">
+    22 October 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="22 October 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes-from-the-meeting" class="md-nav__link">
+    Notes from the meeting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-september-2021" class="md-nav__link">
+    17 September 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="17 September 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes-from-the-meeting_1" class="md-nav__link">
+    Notes from the meeting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-september-2021" class="md-nav__link">
+    3 September 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="3 September 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes-from-the-meeting_2" class="md-nav__link">
+    Notes from the meeting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_1" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-july-2021" class="md-nav__link">
+    2 July 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="2 July 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes-from-the-meeting_3" class="md-nav__link">
+    Notes from the meeting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_2" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-june-2021" class="md-nav__link">
+    25 June 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="25 June 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes-from-the-meeting_4" class="md-nav__link">
+    Notes from the meeting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-june-2021" class="md-nav__link">
+    18 June 2021
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-june-2021" class="md-nav__link">
+    11 June 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="11 June 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes-from-the-meeting_5" class="md-nav__link">
+    Notes from the meeting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_3" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-june-2021" class="md-nav__link">
+    4 June 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="4 June 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#points-to-follow-up" class="md-nav__link">
+    Points to follow up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-may-2021" class="md-nav__link">
+    7 May 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="7 May 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_4" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#30-april-2021" class="md-nav__link">
+    30 April 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="30 April 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_1" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_5" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-april-2021" class="md-nav__link">
+    23 April 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="23 April 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_2" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_6" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-april-2021" class="md-nav__link">
+    16 April 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="16 April 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_3" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-april-2021" class="md-nav__link">
+    9 April 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="9 April 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_4" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_7" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-march-2021" class="md-nav__link">
+    26 March 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="26 March 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_5" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_8" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-march-2021" class="md-nav__link">
+    19 March 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="19 March 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_6" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-related-to-css-services" class="md-nav__link">
+    Points related to CSS services
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-march-2021" class="md-nav__link">
+    12 March 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="12 March 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_7" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_9" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-march-2021" class="md-nav__link">
+    5 March 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="5 March 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_8" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_10" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-february-2021" class="md-nav__link">
+    26 February 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="26 February 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#seminar" class="md-nav__link">
+    Seminar
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-february-2021" class="md-nav__link">
+    19 February 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="19 February 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_9" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_11" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-february-2021" class="md-nav__link">
+    12 February  2021
+  </a>
+  
+    <nav class="md-nav" aria-label="12 February  2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_10" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_12" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-february-2021" class="md-nav__link">
+    5 February  2021
+  </a>
+  
+    <nav class="md-nav" aria-label="5 February  2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_11" class="md-nav__link">
+    Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_13" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#29-january-2021" class="md-nav__link">
+    29 January 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="29 January 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information_12" class="md-nav__link">
+    Information**
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_14" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-january-2021" class="md-nav__link">
+    22 January 2021
+  </a>
+  
+    <nav class="md-nav" aria-label="22 January 2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#points-to-be-followed-up_15" class="md-nav__link">
+    Points to be followed up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://gitlab.cern.ch/abpcomputing/abpcpweb/blob/master/docs/notes_from_meetings.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="notes-from-abp-computing-meetings">Notes from ABP Computing Meetings</h1>
+<p>The <strong>agenda and Zoom links</strong> of ABP Computing Meetings can be find in the corresponding <strong><a href="https://indico.cern.ch/category/8448/">indico category</a></strong></p>
+<p>Information and some points to be followed up from each meeting can be found in the following.</p>
+<h2 id="22-october-2021"><a href="https://indico.cern.ch/event/1082573/">22 October 2021</a></h2>
+<p><strong>Present:</strong> F. Asvesta, R. Bruce, X. Buffat, F. Carlier, L. Deniau, J. Farmer, D. Gamba, L. Giacomel, G. Iadarola, P. Kicsiny, A. Latina, K. Paraschou, A. Poyet, F. Van Der Veken.</p>
+<h3 id="notes-from-the-meeting"><em>Notes from the meeting</em></h3>
+<p>...</p>
+<h2 id="17-september-2021"><a href="https://indico.cern.ch/event/1077444/">17 September 2021</a></h2>
+<p><strong>Present:</strong> F. Asvesta, R. Bruce, F. Carlier, R. De Maria, R. De Maria, L. Deniau, D. Gamba, L. Giacomel, P. Hermes, G. Iadarola, P. Kicsiny, J. Molson, N. Mounet, A. Poyet, M. Schwinzerl, G. Sterbini, F. Van Der Veken</p>
+<h3 id="notes-from-the-meeting_1"><em>Notes from the meeting</em></h3>
+<ul>
+<li><a href="https://docs.google.com/forms/d/1epQbDRPrYLgLKDVXiS6qZkS2nsdphSDgO2ShaDaLyQ0">NXCALS survey</a> has been launched: please take the time to share your experience and future needs.</li>
+<li>VEGA HPC cluster test: report being edited by IT. ABP participants contacted to provide feedback</li>
+<li>Very interesting talk on non-linear normal forms at last LNO meeting (L. Deniau). Subject for future ABP computing forum.</li>
+<li>Ongoing work on Xsuite:<ul>
+<li>Synchrotron radiation advancing well (A. Latina, G. Iadarola)</li>
+<li>Interface with Geant4 running, setting up of HL-LHC loss map ongoing (A. Abramov)</li>
+<li>Strong-strong 6D bb being developed (P. Kicsiny, X Buffat)</li>
+<li>Large scale DA simulation (10k jobs) being compared against Sixtrack (S. Kostoglou, G. Sterbini)</li>
+<li>First long space-charge studies to launched (H. Bartosik, G. Iadarola)</li>
+<li>Generation of matched gaussian beam distributions with non-linear bucket (F. Asvesta), to be extended to more distributions of interest (pencil, halos…)</li>
+<li>Next important milestones<ul>
+<li>Implementation of reference management for knobs - deferred-expression like (R. De Maria)</li>
+<li>Lattice description, can we think of a further integration with MAD-X/cpymad which considers flexibility required for collective effects simulations (R. De Maria, G. Iadarola, T. Persson)</li>
+<li>Porting of particle scattering from sixtrack for collimation, K2 and Fluka coupling (F. Van Der Veken, P. Hermes, ?)</li>
+<li>Implementation of beam loss refinement, aperture interpolation (G. Iadarola, A. Abramov)</li>
+<li>Porting of symplectic interpolator from sixtracklib (K. Paraschou, G. Iadarola)</li>
+<li>Interface with MAD-NG would be a plus  needs MAD-NG/python interface (L. Deniau)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="points-to-be-followed-up"><em>Points to be followed up</em></h3>
+<ul>
+<li>On the benchmark of synchrotron radiation in Xsuite people who might be interested are Axel, Andrey, Felix Carlier.</li>
+<li>Riccardo, Gianni, Felix and Tobias could start a discussion on rationalizing machine descriptions.</li>
+<li>Pascal, Bjorn and James are facing massive slowdown of AFS</li>
+<li>Axel discussed with Tobias and Leon to create tables with the EMIT module in MAD-X (presently one needs to parse the stdout).</li>
+<li>Lorenzo (as Xavier in the past) experiences large failure rate (&gt;5%) for long HTCondor jobs.</li>
+</ul>
+<h2 id="3-september-2021"><a href="https://indico.cern.ch/event/1071870/">3 September 2021</a></h2>
+<p><strong>Present:</strong> F. Asvesta, R. De Maria, L. Deniau, P. Elson, J. Farmer, P. Hermes, G. Iadarola, P. Kicsiny, S. Kostoglou, A. Latina, A. Latina, L. Mether, N. Mounet, K. Paraschou, A. Poyet, M. Schwinzerl, G. Sterbini, F. Van Der Veken, A. Wegscheider</p>
+<h3 id="notes-from-the-meeting_2"><em>Notes from the meeting</em></h3>
+<ul>
+<li>From <a href="https://indico.cern.ch/event/1062485/">ATS-CTTB</a> meeting (20 Aug):<ul>
+<li>Presentation of Community Forum: Machine Learning (V. Kain): "ML coffees' will evolve into the new Machine Learning Community Forum (conveners: A. Apollonio, V. Kain, F. Velotti). Positive experience from the CloudBank pilot project from IT to access computing resources (e.g. GPUs and even quantum computers) from external cloud providers (Google, Amazon)</li>
+<li>Remote Operations Gateway (T. Oulevey): New service developed by BE-CSS to access resources in the TN from outside CERN. It allows connecting to linux machines in the TN through a web browser (could be quite handy for machine follow-up).</li>
+<li>Confirmed end of support for Windows in Controls (M. Gourber-Pace)</li>
+<li>Replacement campaign is ongoing for faulty Siemens I/O cards</li>
+</ul>
+</li>
+<li>CASTOR service is being discontinued: Users should have been already contacted to move their data</li>
+<li><a href="https://indico.cern.ch/event/975014/">Compute accelerator forum</a> on 8 September. Presentation on Kokkos (C++ performance portability programming model)</li>
+<li>PRACE (Partnership for Advanced Computing in Europe) offers several online courses (often for free). Full list <a href="https://events.prace-ri.eu/category/2/">here</a>.</li>
+<li><a href="https://web.infn.it/esc/index.php?lang=en">School on Efficient Scientific Computing</a> in Bertinoro (Italy), 4 - 9 Ottobre 2021. ABP could support participation of 1-2 interested students.</li>
+<li><a href="https://github.com/lhcopt/lhcmask/releases/tag/v1.1.0">Pymask v1.1.0</a> released recently<ul>
+<li>Should cover all use-cases of old mask files and offers more features</li>
+<li>We plan to soon shift to Pymask for long-term support. Please start using it and don't hesitate to give feedback.</li>
+</ul>
+</li>
+<li>Developemnt of <a href="https://xsuite.readthedocs.io">Xsuite</a> for tracking simulations is advancing well. First production studies launched. Fell free to give it a try.</li>
+<li>Discussion on NXCALS/LSA (re)naming conventions, status <a href="https://wikis.cern.ch/display/NXCALS/CMW+Entity+Lifecycle+proposal+and+object+renames">here</a>.</li>
+<li>Status of GUI development platforms:<ul>
+<li>Java is and will be supported</li>
+<li>PyQT community growing fast especially in the injectors</li>
+</ul>
+</li>
+</ul>
+<h3 id="points-to-be-followed-up_1"><em>Points to be followed up</em></h3>
+<ul>
+<li>Check status of "pip install nxcals".</li>
+<li><a href="https://docs.google.com/forms/d/1epQbDRPrYLgLKDVXiS6qZkS2nsdphSDgO2ShaDaLyQ0">NXCALS survey</a> has been launched: please take the time to share your experience and future needs.</li>
+</ul>
+<h2 id="2-july-2021"><a href="https://indico.cern.ch/event/1054674/">2 July 2021</a></h2>
+<p><strong>Present:</strong> R. Bruce, X. Buffat, R. De Maria, J. Farmer, D. Gamba, L. Giacomel, G. Iadarola, S. Kostoglou, L. Mether, J. Molson, K. Paraschou, M. Schwinzerl, F. Soubelet, G. Sterbini, T. Tobias, A. Wegscheider.</p>
+<h3 id="notes-from-the-meeting_3"><em>Notes from the meeting</em></h3>
+<ul>
+<li><a href="https://lms.cern.ch/ekp/servlet/ekp?PX=N&amp;TEACHREVIEW=N&amp;CID=EKP000043690&amp;TX=FORMAT1&amp;LANGUAGE_TAG=en&amp;DECORATEPAGE=N">UDEMY offer for CERN</a> includes several course that could be of interest</li>
+<li>Xsuite is coming together:<ul>
+<li>Integrated suite for single-particle and collective effects simulations</li>
+<li>Supports CPU and GPU</li>
+<li>Just introduced integration with PyHEADTAIL.</li>
+<li>By now tested for LHC with bb and machine imperfections and on SPS with frozen spacecharge</li>
+<li>Info at <a href="https://xsuite.readthedocs.io">https://xsuite.readthedocs.io</a></li>
+<li>Feedback is welcome</li>
+</ul>
+</li>
+</ul>
+<h3 id="points-to-be-followed-up_2"><em>Points to be followed up</em></h3>
+<ul>
+<li>There is an inconsistency in the element naming between twiss and survey in cpymad (<code>:n</code> missing in survey). This is fixed in the mad-x master. Will become available in lxplus from the next release.</li>
+</ul>
+<h2 id="25-june-2021"><a href="https://indico.cern.ch/event/1052393/">25 June 2021</a></h2>
+<p><strong>Present:</strong> F. Asvesta, R. Bruce, R. De Maria, L. Deniau, J. Dilly, J. Farmer, D. Gamba, A. Gerbershagen, L. Giacomel, H. Graham, M. Hofer, G. Iadarola, P. Kicsiny, J. Molson, N. Mounet, K. Paraschou, F. Soubelet, G. Sterbini, T. Tobias, F. Van Der Veken.</p>
+<h3 id="notes-from-the-meeting_4"><em>Notes from the meeting</em></h3>
+<p>Continued review of tools to launch and manage jobs:</p>
+<ul>
+<li>Presentation by Felix on PyLHCsubmitter</li>
+<li>Presentation by Michael on DAGman</li>
+</ul>
+<h2 id="18-june-2021"><a href="https://indico.cern.ch/event/1048148/">18 June 2021</a></h2>
+<p><strong>Present:</strong> R. Bruce, R. De Maria, L. Deniau, J. Dilly, J. Farmer, D. Gamba, L. Giacomel, A. Gerbershagen, H. Graham, P. Hermes, C. Hernalsteens, E. Hoydalsvik, M. Hofer, G. Iadarola, A. Latina, J. Molson, T. Persson, A. Poyet, G. Russo, F. Soubelet, G. Sterbini, F. Van Der Veken, A. Wegscheider.</p>
+<p>Started discussion on tools to launch and manage jobs:</p>
+<ul>
+<li>Presentation by G. Sterbini</li>
+</ul>
+<p>General feedback: users prefer small tools for individual functionalities (templating, job submission) to be combined flexibly in python, instead of complex integrated tools that might lack flexibility and require a big investment to integrate our codes. Agility and adaptability to different simulation setups is key</p>
+<h2 id="11-june-2021"><a href="https://indico.cern.ch/event/1048147/">11 June 2021</a></h2>
+<p><strong>Present:</strong>  J. Dilly, J. Farmer, A. Gerbershagen, P. Hermes, M. Hofer, G. Iadarola, A. Latina, L. Mether, N. Mounet, T. Persson, F. Soubelet.</p>
+<h3 id="notes-from-the-meeting_5"><em>Notes from the meeting</em></h3>
+<ul>
+<li>A <a href="https://indico.cern.ch/event/1046226/">Web Development Technical Exchange meeting</a> organized by BE-CSS will takeplace on Thursday, June 24.</li>
+<li>The next computing meeting (18 June) will be devoted to tools for HTCondor submission and management.</li>
+<li>“ABP Computing day” will take place towards the end of the year.<ul>
+<li>The main goals will be:<ul>
+<li>Discuss the progress on software development activities in ABP</li>
+<li>Present the strategy and objectives for 2022+</li>
+</ul>
+</li>
+<li>Tentative date: Thu 18 Nov 2021 (there might be a conflict with Evian 2021)</li>
+<li>Agenda to be drafted early enough to allow for proper preparation</li>
+<li>Proposals on possible topics and contributions are very welcome</li>
+</ul>
+</li>
+</ul>
+<h3 id="points-to-be-followed-up_3"><em>Points to be followed up</em></h3>
+<ul>
+<li>Tobias has finished the implementation of the wire in MAD-X. Guido and team will test it.<ul>
+<li>It would be useful to have a script in the MAD-X repository to generate cpymad from a development version. It could be limited to linux for the time being.</li>
+<li>Tests could be made against the R matrix computation from tracking (using finite differences) implemented by Kostas.</li>
+</ul>
+</li>
+<li>Guido found problems runnnig pytimber on SWAN to access NXCALS:<ul>
+<li><a href="https://issues.cern.ch/browse/PYT-60">Ticket opened</a> with CSS team</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-june-2021"><a href="https://indico.cern.ch/event/1045636/">4 June 2021</a></h2>
+<p><strong>Present:</strong>  R. Bruce, F. Carlier, R. De Maria, P. Elson, J. Farmer, D. Gamba, A. Gerbenshagen, P. Hermes, G. Iadarola, A. Latina, L. Mether, J. Moldson, N. Mounet, K. Paraschou, F. Soubelet, G. Sterbini, M. Schwinzerl, F. Van Der Veken.</p>
+<h3 id="points-to-follow-up"><em>Points to follow up</em></h3>
+<ul>
+<li>Points related to BE-CSS services:<ul>
+<li>Users had issues using pytimber with NXCALS. Something went wrong with their access request and they had troubles related to authentication. The main issue was that the exception raised did not refer at all to authentication and therfore it took very long time to diagnose the problem.</li>
+<li>PyJAPCScout is now being used widely in the injectors for commissioning and studies. The tool could be presented to a wider community in an AccPy meeting. It would be good to identify features of general interest and incorporate them in PyJAPC.</li>
+<li>There were issues installing NXCALS on the SWAN Stack 100. In principle NXCALS should be already installed.</li>
+</ul>
+</li>
+<li>On 18 June there will be a meeting dedicated to HTCondor submission tools.</li>
+<li>It would be good to make a new release of sixtrack and update the sixtrack version on AFS.</li>
+</ul>
+<h2 id="7-may-2021"><a href="https://indico.cern.ch/event/1037110/">7 May 2021</a></h2>
+<p><strong>Present:</strong> X. Buffat, R. Bruce, F. Carlier, L. Deniau, J. Dilly, J. Farmer, P. Hermes, M. Hofer, D. Gamba, L. Giacomel, G. Iadarola, A. Latina, L. Mether, J. Molson, N. Mounet, K. Paraschou, T. Persson, M. Schwinzerl, F. Soubelet, G. Sterbini.</p>
+<h3 id="information"><em>Information</em></h3>
+<ul>
+<li>BE-CSS contacted us to see if there is any interest from our side to use SWAN in the technical network:<ul>
+<li>If such a service becomes available there would be definitely several users in ABP (especially if PyJAPC, PjLSA etc. would also be accessible through SWAN-TN).</li>
+<li>A question that was raised is wether making SWAN available in the TN would mean that the EOS filesystem would become also available in the TN (as SWAN presently runs on EOS). This would be very useful to avoid the overhead of copying data for offline analysis.</li>
+</ul>
+</li>
+<li>The reorganization of the HTCondor e-groups has been finalized. Users from old e-groups (SLAP, ICE) have been redistributed. Old e-groups have been discontinued.</li>
+<li>Tobias and Laurent annonced the latest MAD-X release.</li>
+<li>Nicolas and Markus announced their <a href="https://indico.cern.ch/event/1007418/contributions/4228063/">new python package for handling impedance models</a>.</li>
+</ul>
+<h3 id="points-to-be-followed-up_4"><em>Points to be followed up</em></h3>
+<ul>
+<li>AWAKE groups for batch and HPC should be rationalized.</li>
+<li>General discussion on HTCondor use and performance (to be followed up with IT):<ul>
+<li>Different teams have developed tools to launch and manage HTCondor jobs (the most advanced are most likely from the OMC team and Guido/Axel).</li>
+<li>There is a general interest in using a supported python API for HTCondor. Could IT provide such a service?</li>
+<li>Users observe high failure rate for long jobs due to the fact that sometimes the SCHEDD stops working for a short time and the job hangs. Can any improvement be considered on the IT side?</li>
+<li>Users find the 2 GB of RAM associated with a single-core job small for many jobs. What is the overhead in terms of priority of requesting two cores just to have more RAM?</li>
+</ul>
+</li>
+<li>Davide is working on the implementation of PyJAPC scout<ul>
+<li>It would be useful to have a basic intro page</li>
+</ul>
+</li>
+</ul>
+<h2 id="30-april-2021"><a href="https://indico.cern.ch/event/1034138/">30 April 2021</a></h2>
+<p><strong>Present:</strong> R.Bruce, X. Buffat, R. De Maria, F. Carlier, L. Denieau, J. Dilly, J. Farmer, S. Furuseth, A. Gerbershagen, P. Hermes, M. Hofer, G. Iadarola, A. Latina, J. Molson, N. Mounet, K. Paraschou, T. Persson, M. Rognlien, M. Schwinzerl, F. Soubelet, F. Van Der Veken.</p>
+<h3 id="information_1"><em>Information</em></h3>
+<ul>
+<li>A very interesting workshop on “CloudBank” pilot project took place on Tuesday. Allows usage of computing resources from commercial providers (e.g. Google, Amazon) See <a href="https://indico.cern.ch/event/1021544/">indico page</a>.</li>
+<li>HTCondor groups reorganization:<ul>
+<li>Users from old e-groups (SLAP, ICE) were redistributed (thanks to Massimo for the help!). The old e-groups will be discontinued soon.</li>
+<li>Users can use the <a href="https://haggis.cern.ch/">Haggis tool</a> to check their accounting group (accessible only within the CERN network).</li>
+</ul>
+</li>
+<li>MAD-NG vs PTC discrepancy for CLIC is understood. MAD-NG works on Apple M1. Work on non-linear normal forms is advancing.</li>
+</ul>
+<h3 id="points-to-be-followed-up_5"><em>Points to be followed up</em></h3>
+<ul>
+<li>It would be convenient to have the long-name export from MAD to sixtrack enabled by default. This should come with the next MAD release (next week).</li>
+<li>James would be interested in trying CVMFS for alleviating AFS/EOS issues with IO intensive startup of many jobs. A "beam-physics" CVMFS space was recently created (reqeuest by Cedric, TE-MPE) and could be used for this purpose. There should be the possibility of restricting access, e.g. to comply with software license conditions.</li>
+<li>Many parallel FCC-ee tracking efforts are starting. It is not always trivial to understand tools assumptions and conventions (e.g. with respect to tapering and sawtooth orbit). Some coordinated benchmarking effort would be beneficial.<ul>
+<li>Andrea mentioned tha some benchmarking of MAD-X radiation features against MAD8 and Placet was done in the past.</li>
+</ul>
+</li>
+</ul>
+<h2 id="23-april-2021"><a href="https://indico.cern.ch/event/1030187/">23 April 2021</a></h2>
+<p><strong>Present:</strong> A. Abramov, X. Buffat, J. Dilly, J. Farmer, L. Giacomel, D. Gamba, P. Hermes, G. Iadarola, A. Latina, J. Molson, N. Mounet, M. Rognlien, T. Persson, F. Soubelet, G. Sterbini, F. Van Der Veken</p>
+<h3 id="information_2"><em>Information</em></h3>
+<ul>
+<li>CERN HPC team asked for test simulations that could be used to validate scalability on large external HPC clusters (details on <a href="https://mattermost.web.cern.ch/abpcomputing/pl/9e3p675jf7df8rexwcpk6qhqey">mattermost</a>).</li>
+<li>Registrations to <a href="https://indico.cern.ch/event/1019958/">PyHEP2021</a> (July 2021) are open.</li>
+<li>HTCondor usage: so far no visible side effect of accounting groups remapping.</li>
+<li>James mentioned that bugfixes for Geant4 have been provided (related to issues mentioned in a previous meeting) and are being tested. Pull request for sixtrack coming soon (mostly collimation features).</li>
+<li>Andrea developed backtracking in RFTrack for injector-gun design based on required distribution defined downstream.</li>
+<li>Nicolas asked for passwordless access to NXCALS. It can be done only with kerberos.</li>
+<li>Markus suggested to look into the joblib library for simple parallel tasks.</li>
+</ul>
+<h3 id="points-to-be-followed-up_6"><em>Points to be followed up</em></h3>
+<ul>
+<li>MAD-X team looking into issue with IBS module.</li>
+<li>Pascal encountered issues with BOINC spool space. Being followed-up.</li>
+<li>Gianni/Frederik/Tobias to have a chat on status and evolution of DIST library.</li>
+</ul>
+<h2 id="16-april-2021"><a href="https://indico.cern.ch/event/1027542/">16 April 2021</a></h2>
+<p><strong>Present:</strong> R. Bruce, X. Buffat, D. Gamba, G. Iadarola, R. De Maria, J. Dilly, S. Joly, P. Elson, J. Farmer, A. Gerbenshagen, L. Giacomel, A. Latina, T. Persson, F. Soubelet, G. Sterbini, F. Van Der Veken.</p>
+<h3 id="information_3"><em>Information</em></h3>
+<ul>
+<li>ABP HTCondor quota remapped on Tuesday 13 Apr:<ul>
+<li>we now have a single computing group “group_u_BE.ABP.NORMAL”, which is organized in six e-groups associated to the sections<ul>
+<li>batch-u-abp-cei (contains the old e-group: htcondor-u-ICE)</li>
+<li>batch-u-abp-hsl</li>
+<li>batch-u-abp-inc</li>
+<li>batch-u-abp-laf</li>
+<li>batch-u-abp-lno (contains old e-group: htcondor-u-SLAP)</li>
+<li>batch-u-abp-ndc (contains old e-group: LHC-COLL-LSF-users)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Please use the new section e-groups to add new users.</li>
+<li>The old e-groups will be discontinued after moving the users to the respective section e-group.</li>
+<li>Discussion have started to prolong the exploitation of the <a href="../computing_resources/hpc_cnaf/">cluster at INFN-CNAF</a> (800 cores) beyond the end of the contract (Dec 2022).<ul>
+<li>We could prolong its usage for three more years (paying the energy consumption)</li>
+<li>If some extra funding is available, a few more nodes could be added to compensate for expected “ageing”.</li>
+<li>It is assumed that it will be used mostly for single-node jobs (up to 48 cores) due to end of support of the installed low-latency network (OK based on past experience).</li>
+</ul>
+</li>
+<li>A survey is being run across the BE department to identify services provided by the IT department on which we rely for simulations and data analysis. The goal is to put in place a coordinated interface to IT and find synergies with other ATS departments.<ul>
+<li>Some draft slides are discussed. Points that could be added:<ul>
+<li>HDFS filesystem for data storage for spark-based analysis.</li>
+<li>Users would like a more complete and supported software stack (libraries, compilers, python, etc.)</li>
+<li>Openshift and webservices for documentation.</li>
+<li>Openstack, GitLab</li>
+<li>Licensed software: Mathematica, Matlab, CST, etc.</li>
+<li>Lxplus, Windows Terminal Services</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Information from Phil (CSS):<ul>
+<li>A software stack based on LCG 100 is being prepared for usage in LXPLUS via CVMFS.</li>
+<li>A pip-installable NXCALS-pyspark bundle is being also considered.</li>
+</ul>
+</li>
+<li>NXCALS can be accessed from outside CERN using an ssh tunnel. <code>lxtunnel.cern.ch</code> to be preferred to <code>lxplus.cern.ch</code> for this purpose (see <a href="../guides/sshtunnel/">recipe</a> just updated by Joshua).</li>
+<li>Discussion on how to best reformat JAPC data for storage on parquet files: one possibility is to use the same serialization used at RDA level.</li>
+</ul>
+<h2 id="9-april-2021"><a href="https://indico.cern.ch/event/1025755/">9 April 2021</a></h2>
+<p><strong>Present:</strong> R. Bruce, X. Buffat, R. De Maria, L. Deniau, J. Farmer, A. Gerbenshagen, L. Giacomel,  P. Hermes, G. Iadarola, A. Latina, N. Mounet, T. Persson, F. Soubelet, G. Sterbini, F. Van Der Veken.</p>
+<h3 id="information_4"><em>Information</em></h3>
+<ul>
+<li>Phil from CSS will join the next meeting.</li>
+<li>Applications are open for the upcoming <a href="https://indico.cern.ch/event/1017080/">CERN thematic School on Computing</a> on "Scientific Software for Heterogeneous Architectures”.</li>
+<li>A <a href="http://abpcomputing.web.cern.ch/guides/eos_on_mac/">guide on mounting EOS on mac</a> has been prepared by Ilias, Guido and Joshua. More info also on <a href="https://mattermost.web.cern.ch/abpcomputing/pl/5p54ieirofdxf8caejuy64emuy">this mattermost discussion</a>.</li>
+<li>An <a href="https://indico.cern.ch/event/974794/">Accelerating Python user's meeting</a> will take place t2021 Q1 on 29 April. Topics:  PyTimber, PyJapc, accwidgets, asyncio usage</li>
+<li>A pilot program was launched by IT and IPT to access commercial cloud services (Google, Amazon). A <a href="https://indico.cern.ch/event/1021544/">workshop</a> will be held on Apr 28 to have a first overview.</li>
+<li>Information on how to install EOS on Ubuntu can be found in <a href="https://gitlab.cern.ch/sterbini/be-abp-docker/-/blob/master/Dockerfile">this docker file</a> prepared by Guido.</li>
+<li>Frederik deployed a fixed version of SixDesk/DB in the AFS repository (compiles correctly).</li>
+<li>Issues with slicing of solenoid in MAD-X was fixed by Helmut.</li>
+<li>Nicolas and Markus found very convenient to use <a href="https://joblib.readthedocs.io/en/latest/">joblib</a> for simple parallelization in the new Impedance Toolbox.</li>
+</ul>
+<h3 id="points-to-be-followed-up_7"><em>Points to be followed up</em></h3>
+<ul>
+<li>New e-groups for access to HTCondor have been created. One per section, with associated admin e-group. SL and CP members have been added to admin e-group for their sections<ul>
+<li>We will proceed to the remapping of the ABP quota quota next week. The operation should be transparent as the old e-groups were inserted inside the new ones.</li>
+<li>We should gradually empty the old groups and move users to the new ones</li>
+</ul>
+</li>
+<li>Guido prepared an "ABP docker container" based on Ubuntu with the typical tools (python installation, mad-x) and the capability of mounting EOS.<ul>
+<li>An installation of HTCondor will also be added.</li>
+</ul>
+</li>
+<li>An issue was identified in the usage of beam-beam in sixrtack with ions (see <a href="https://github.com/SixTrack/SixTrack/issues/1082">GitHub issue</a>). A workaround has been inserted in pymask to circumvent the problem.</li>
+<li>Frederik is now working on fixing the error ruotines for the mask. Should be ready in a few weeks.</li>
+<li>A ticket has been opened by external users on the IBS calculation for MAD-X in some special cases. Tobias will look into it together with Fanouria.</li>
+<li>Andrea is studying multibunch effects for the FCC-ee injector linac. He improved the modeling of the wakefields. Perhaps we could look into possible synergies with PyHEADTAIL.</li>
+</ul>
+<h2 id="26-march-2021"><a href="https://indico.cern.ch/event/1021214/">26 March 2021</a></h2>
+<p><strong>Present:</strong> R. Bruce, X. Buffat, R. De Maria, L. Deniau, F. Calier, J. Dilly, J. Farmer, S. Furuseh, D. Gamba, L. Giacomel,  P. Hermes, M. Hofer, G. Iadarola, A. Latina, J. Molson, N. Mounet, T. Persson, K. Paraschou, T. Pieloni, F. Soubelet, G. Sterbini, F. Van Der Veken.</p>
+<h3 id="information_5"><em>Information</em></h3>
+<ul>
+<li>JetBrains (the company developing PyCharm) is looking for early adopters at CERN for their new IDE for data analysis and prototyping machine learning models.</li>
+<li>An interesting reading: <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005510">“Good enough practices in scientific computing"</a></li>
+<li>The <a href="https://zenodo.org">Zenodo service</a> allows getting DOI code for data and code, for referencing in publications.</li>
+<li>Tatiana introduced the EPFL project on FCC-ee code development.</li>
+<li>Nicolas had very satisfactory results speeding up pythoon code with numba parallel.</li>
+</ul>
+<h3 id="points-to-be-followed-up_8"><em>Points to be followed up</em></h3>
+<ul>
+<li>There are discussions ongoing on the future of PyTIMBER (see: <a href="https://wikis.cern.ch/display/NXCALS/Future+of+PyTimber">https://wikis.cern.ch/display/NXCALS/Future+of+PyTimber</a>). Riccardo joined the meeting.The idea is to converge to a single Python interface for NXCALS, which is easy to install, exposes the pyspark features, and has high-level methods like pytimber. CSS plans to discontinue the Java Backport API at the end of Run 3.</li>
+<li>Pascal encountered a blocking issue installing SixDesk/SixDB. Frederik will provide some help.</li>
+<li>It is proposed to enable the long names by default in the sixtrack input generation of MAD-X (requires Sixtrack V).</li>
+<li>Some updates have been introduced in the SixTrack collimation features (to be pushed). A problem has been identified in Geant 4 (a bug report has been opened).</li>
+<li>Non-staff members of the collimation team have issues accessing the source of Fluka.</li>
+<li>Nicolas asked whether anybody has experience with the diagonalization of very large matrices. Riccardo faced the problem in the past and will provide the solution that he adopted.</li>
+</ul>
+<h2 id="19-march-2021"><a href="https://indico.cern.ch/event/1019549/">19 March 2021</a></h2>
+<p><strong>Present:</strong> F. Antoniou, F. Asvesta, H. Bartosik, R. Bruce, F. Calier, R. De Maria, L. Deniau, P. Elson, J. Farmer, S. Furuseth, J. Dilly, P. Hermes, D. Gamba, L. Giacomel, M. Hofer, G. Iadarola, A. Latina, N. Mounet, K. Paraschou, T. Persson, T. Pieloni, F. Soubelet, G. Sterbini, F. Van Der Veken.</p>
+<h3 id="information_6"><em>Information</em></h3>
+<ul>
+<li>The TE-MPE team would like to store software for beam physics in CVMFS. We will propose to create a general "beam-physics" project in CVMFS where we will able to store also ABP software if needed.</li>
+<li>Even if the AFS phaseout has been put on hold, IT is still checking with users whether their project spaces could be moved to EOS. In general this works for data storage, but can create problems when using the filesystem as a working space for simulations (e.g in HTCondor). For this kind of usage we have the option to keep using AFS.</li>
+<li>Next events: <a href="GPU Technology Conference 2021 (GTC21), free to attend">GPU Technology Conference 2021 (GTC21)</a>, free to attend.</li>
+</ul>
+<h3 id="points-related-to-css-services"><em>Points related to CSS services</em></h3>
+<ul>
+<li><a href="http://abpcomputing.web.cern.ch/guides/accpy/">This page</a> summarizes issues encountered with python packages stored in PyPI, which depend on packages available only in the acc-py repository. Although a workaround was identified it would be good to find a more flexible solution.</li>
+<li>The ongoing development to adapt PyJAPC to the needs of the injectors commissioning (to discontinue the usage of matlabMonitor) is using <a href="https://gitlab.cern.ch/abpcomputing/sandbox/pyjapcscout">this repository</a>. More info can be found in the <a href="https://codimd.web.cern.ch/p/YOehZUxXv#">slides shared by Guido</a>. The main needs are:<ul>
+<li>Ensuring “synchronization” of a list of devices properties</li>
+<li>Having a single centralized callback</li>
+<li>Saving automatically the data in a “reasonable” format.</li>
+</ul>
+</li>
+<li>Relying on pandas for the data manipulation is a reasonable choice. The candidate format for the data saving is parquet at present, but we could probably get in contact with the NXCALS team to see if they have any further suggestion. Feather and HDF5 could also be investigated.</li>
+<li>Answers to some of the questions in Guido's slides were provided by Phil after the meeting<ul>
+<li><em>Q: Is it possible to install Acc-Py on non TN machines? Is there a container/docker image?</em> A: Yes, there is an installer for the base distribution available. Please see <a href="https://wikis.cern.ch/display/ACCPY/Acc-Py+base#Acc-Pybase-UsingAcc-Pybase">https://wikis.cern.ch/display/ACCPY/Acc-Py+base#Acc-Pybase-UsingAcc-Pybase</a>. If there are any issues, please contact <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#99;&#99;&#45;&#112;&#121;&#116;&#104;&#111;&#110;&#45;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#99;&#101;&#114;&#110;&#46;&#99;&#104;">&#97;&#99;&#99;&#45;&#112;&#121;&#116;&#104;&#111;&#110;&#45;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#99;&#101;&#114;&#110;&#46;&#99;&#104;</a> for the installer. There is a prototype docker image, but we have not officially released it yet; we would happily engage with anybody who wanted to use the docker image to better understand the use cases and requirements.</li>
+<li><em>Q: Is there a better way to avoid blocking the exit of a Python application which uses the JVM?</em> A: The next version of cmmnbuild-dep-manager includes a workaround for Java libraries that aren’t correctly clearing up their non-daemon threads. This will be released over the coming days as cmmnbuild-dep-manager 2.8.0.</li>
+<li><em>Q: What is the best way to build documentation for packages with Acc-Py</em> A: Please see <a href="https://wikis.cern.ch/display/ACCPY/Documentation">https://wikis.cern.ch/display/ACCPY/Documentation</a> for some tips. We would be very happy to improve our documentation service’s documentation 😊… please get in touch if something isn’t clear or could be better phrased! Note that this service is only available inside the GPN – we don’t currently plan to make the documentation available outside of the CERN network. For externally hosted documentation readthedocs is a good solution.</li>
+</ul>
+</li>
+</ul>
+<h2 id="12-march-2021"><a href="https://indico.cern.ch/event/1017254/">12 March 2021</a></h2>
+<p><strong>Present:</strong> X. Buffat, R. Bruce, F. Carlier, R. De Maria, J. Dilly, L. Deniau, J. Farmer, S. Furuseth, P. Hermes, M. Hofer, G. Iadarola, L. Giacomel, S. Kostoglou, A. Latina, J. Molson, N. Mounet, T. Persson, G. Sterbini.</p>
+<h3 id="information_7"><em>Information</em></h3>
+<ul>
+<li>Phil from CSS will join the next meeting (19 March 2021)</li>
+<li>Talks on GPU applications at last Compute Accelerator Forum (<a href="Talks on GPU applications at last Compute Accelerator Forum (link)">link</a>).</li>
+<li>Gianni is progressing with the development of the Xfield library.</li>
+<li>Sofia is continuing the development of pymask to cover simulations with ions.</li>
+<li>Pascal is looking into refurbishing the python tools used for collimation, to move to a pip-installable package. Something that might be useful:<ul>
+<li><a href="http://abpcomputing.web.cern.ch/guides/python_packages/">Guidelines for python packages</a> are available on the ABP Computing website (including an example package with instructions).</li>
+<li>Git workflows can be used for the automatic deployment in PyPIC (see for example <a href="https://github.com/pylhc/omc3/blob/master/.github/workflows/publish.yml">PyLHC</a>).</li>
+</ul>
+</li>
+<li>Guido found an <a href="https://github.com/lhcopt/lhcmask/issues/37">issue</a> in the generation of the MAD-X beam-beam lenses in pymask (which does not affect the generation of the sixtrack models, unless matchings are done with beam-beam on). This has been fixed in the latest release.</li>
+<li>Laurent is working on non-linear normal forms.</li>
+<li>Andrea (and Raul) are porting CSR features form Placet 1 to Placet 2, improving the implementation in different ways.</li>
+<li>John and the AWAKE team solved an issue with their quasi-static PIC code.</li>
+<li>Riccardo added a little feature in cpymad to access the strengths generated by the correct module.</li>
+</ul>
+<h3 id="points-to-be-followed-up_9"><em>Points to be followed up</em></h3>
+<ul>
+<li>IT is moving Nag and Lahey compilers and libraries from afs to cvmfs. The compilers are indeed used to test sixtrack compilation.</li>
+<li>Joshua and Felix prepared an <a href="http://abpcomputing.web.cern.ch/guides/accpy/">intro page on AccPy</a>. Here they summarize also the issues that they faced with python packages hosted in the standard PyPI index, which depend AccPy hosted packages. Their workaround to make the package pip installable is described in the page o Definitely a general issue to be discussed with CSS.</li>
+<li>EPFL is working on code development for FCC-ee. Input on possible software requirements for future studies is welcome.</li>
+<li>MAD-X development (Tobias):<ul>
+<li>Issue with equilibrium emittance calculation in the presence of tapering being investigated (for FCC-ee).</li>
+<li>Improving the slicing of RBEND (placing of slices for shared dipoles).</li>
+</ul>
+</li>
+<li>Sondre finds extreme numerical convergence conditions (number of slices) in COMBI to resolve the tune shift.</li>
+<li>Roderick and team are working on identifying software tools for collimation studies for FCC-ee. In a few weeks we could have a first discussion on collimation requirements for the Xtrack library that is being developed.</li>
+<li>Discussion are starting in CSS on how to rationalize python tools to access NXCALS.</li>
+</ul>
+<h2 id="5-march-2021"><a href="https://indico.cern.ch/event/1013327/">5 March 2021</a></h2>
+<p><strong>Present:</strong> X. Buffat, R. Bruce, F. Carlier, L. Deniau, R. De Maria, J. W. Dilly, J. Farmer, M. Hofer, D. Gamba, P. Hermes, G. Iadarola, A. Latina, S. Joly, N. Mounet, M, Rognlien, G. Sterbini, T. Persson, F. Soubelet, F. Van Der Veken.</p>
+<h3 id="information_8"><em>Information</em></h3>
+<ul>
+<li>New <a href="https://gitlab.cern.ch/abpcomputing/sandbox">ABP Computing Sandbox space</a> was created on GitLab (suggestion by Davide and Guido). Feel free to use it as incubator for new shared projects.</li>
+<li>Following discussion from last meeting:<ul>
+<li>Guido prepared a simple guide on the use of docker containers (available <a href="http://abpcomputing.web.cern.ch/guides/docker/">here</a>)</li>
+<li>Nicolas prepared a small guide on how to install PyHEADTAIL on Mac using Anaconda (available <a href="https://github.com/PyCOMPLETE/PyHEADTAIL/wiki/Installation-Notes#installation-on-macos-with-anaconda">here</a>)</li>
+</ul>
+</li>
+<li>In SixTrack two bug-fixes related to collimation were introduced (see <a href="https://github.com/SixTrack/SixTrack/pull/1077">PR1</a> and <a href="https://github.com/SixTrack/SixTrack/pull/1078">PR2</a>)</li>
+<li>Report from the last IT User Meeting (by Laurent). Agenda and material of the meeting can be found <a href="https://indico.cern.ch/event/980347/">here</a>. Particularly relevant for our scientific computing activitiies:<ul>
+<li>AFS replacement is now stopped (since no available drop-in solution was found). The strategy will be reviewed at the end of Run-3 (Interesting review document published - <a href="https://cds.cern.ch/record/2750122">https://cds.cern.ch/record/2750122</a>).</li>
+<li>A working group is being setup to look into possible replacement of CentOS7 due to a change in support policy from RedHat. </li>
+</ul>
+</li>
+<li>There is an upcoming OpenLab Technical workshop (<a href="https://indico.cern.ch/event/1009424">indico page</a>).</li>
+</ul>
+<h3 id="points-to-be-followed-up_10"><em>Points to be followed up</em></h3>
+<ul>
+<li>For MAD-X:<ul>
+<li>The new MAD-X release is slowly converging.</li>
+<li>The build through GitHub actions started failing due to an upgrade of the compiler on the GitHub size (probably related to vectorization and data alignment). It might be related to the problems recently encountered by Riccardo (see <a href="https://github.com/MethodicalAcceleratorDesign/MAD-X/issues/982">issue</a>).</li>
+</ul>
+</li>
+<li>For SixTrack:<ul>
+<li>Sixtrack build with GCC 10 was failing due to multiple includes in DISTlib. A workaround has been introduced in sixtrack (see <a href="https://github.com/SixTrack/SixTrack/pull/1076">PR</a>),  but proper fix needs to be introduced in DISTlib.</li>
+<li>Full crab cavity tilt required by Sofia is not really easy to implement, but could be handled through reference frame rotations in the user's side.</li>
+</ul>
+</li>
+<li>Features to complement PyJAPC are being developed in the <a href="https://gitlab.cern.ch/abpcomputing/sandbox/pyjapcscout">PyJapcScout repository</a> on the ABP Computing sandbox.</li>
+<li>Josh and Felix are facing issue in the development of the OMC3 toolbox, having to combine packages from the standard PyPI and the acc-py package indices. They arranged a workaround and summarized the situation <a href="../guides/accpy/">here</a> -&gt; to be discussed with Phil, to see whether better solutions can be identified.</li>
+</ul>
+<h2 id="26-february-2021">26 February 2021</h2>
+<h3 id="seminar"><em>Seminar</em></h3>
+<p>Our usual round table was replaced by a seminar by R. Brito Da Rocha from IT on "Notebooks and Computing Workflows with IT services".
+The slides and and the recording of his presentation are available on <a href="https://indico.cern.ch/event/976158/">indico</a>.</p>
+<h2 id="19-february-2021">19 February 2021</h2>
+<p><strong>Present:</strong> R. Bruce, X. Buffat, L. Deniau, P. Elson, J. Farmer, P. Hermes, G. Iadarola, S. Kostoglou, A. Latina, N. Mounet, T. Persson, G. Sterbini.</p>
+<h3 id="information_9"><em>Information</em></h3>
+<ul>
+<li>P. Elson, indicated as link person between BE-CSS and BE-ABP, joined the meeting. He has vast background on python solutions for scientific computing and has a leading role in the AccPy community. He could join our meetings ~once per month, to discuss CSS services.</li>
+<li>Two guides in abpcomputing website have been updated to cover Ubuntu 20.04:<ul>
+<li><a href="../guides/htcondor/">Local HTCondor installation</a> (thanks Joschua &amp; co.)</li>
+<li><a href="../guides/openafs/">OpenAFS installation</a> (thanks Guido, Riccardo etc.)</li>
+</ul>
+</li>
+<li>We have two new <a href="https://mattermost.web.cern.ch/abpcomputing/channels/town-square">Mattermost channels</a>: Six* (for sixtrack, sixdesk, and other things like that) and pymask.</li>
+<li>The change of PyPI index caused by the installation of the acc-py-pip-config package can be undone with pip uninstall. Thanks Phil!</li>
+<li>Sofia is working to extend pymask to work with ions.</li>
+<li>There will be an inrmediat MAD-X course on 22-23 March</li>
+</ul>
+<h3 id="points-to-be-followed-up_11"><em>Points to be followed up</em></h3>
+<ul>
+<li>Guido gave a <a href="https://indico.cern.ch/event/1006995/contributions/4226442">presentation at the ABP-INC meeting</a> on how to reverse sequences using cpymad (generation of beam 4). cpymad input from python seems to be slower than calling a madx script file. To be investigated.</li>
+<li>The issue with SixTrack V identified by the collimation team was traced back to wrong units used for the proton mass in one place (to be ported in the master branch). There was also an issue compiling Sixtrack in the presence of the dist module. For now this can be bypassed disabling the module (not needed for these studies). Tobias will follow it up. </li>
+<li><a href="https://github.com/MethodicalAcceleratorDesign/MAD-X/issues/981">Issue with crabcavity in MAD-X</a>: it has been fixed in the MAD part. The problem with PTC still needs to be understood (not urgent). The fix for the MAD side will be deployed with the next release.</li>
+<li>Group subscription in PyJAPC: Davide will start working on it soon, using examples for the PS provided by Alex. Phil provided useful suggestions to ease the implementation.</li>
+<li>Nicolas asked for suggestions to get PyHEADTAIL running on Mac (issues with compiling the Cython part). One possibility is to usee Anaconda: after the meeting Nicolas provided a <a href="https://github.com/PyCOMPLETE/PyHEADTAIL/wiki/Installation-Notes#installation-on-macos-with-anaconda">simple recipe on the PyHEADTAIL wiki</a>. The alternative is to use docker -&gt; some information on how to get started has been prepared by Guido (<a href="https://codimd.web.cern.ch/1ZjsMtBuQkWrjJlAVbqk-Q">available on CodiMD</a>, to be ported to the abpcomputing website).</li>
+</ul>
+<h2 id="12-february-2021">12 February  2021</h2>
+<p><strong>Present:</strong> R. Bruce, R. De Maria, J. Dilly, D. Gamba, A. Gerbershagen, P. Hermes, G. Iadarola, S. Joly, J. Farmer, A. Latina, L. Medina, N. Mounet, K. Paraschou, T. Persson, G. Sterbini, F. Van Der Veken.</p>
+<h3 id="information_10"><em>Information</em></h3>
+<ul>
+<li>Phil Elson will be the CSS contact person for ABP</li>
+<li>News on GPU infrastructure from IT (e.g. GPUs for CI). More info (<a href="https://indico.cern.ch/event/975007/contributions/4208132">here</a>)</li>
+<li>Discussion on necessary prerequisites to migrate ABP tools for the injectors to PyJAPC, to be followed up in collaboration with BE-CSS<ul>
+<li>Need for group subscriptions (as available in MATLAB interface). Davide working on the development of this functionality</li>
+<li>Need to identify a common way of saving PyJAPC data on file (Guido investigated the possibility of using parquet files)</li>
+</ul>
+</li>
+<li>Some extra information on how to access NXCALS using pytimber is available at: <a href="http://abpcomputing.web.cern.ch/guides/pytimber_nxcals/">http://abpcomputing.web.cern.ch/guides/pytimber_nxcals/</a></li>
+<li>Issues encountered with with Pytimber in SWAN: there are plans ot remove pytimber from SWAN and leave the installation to the user.</li>
+<li>News from BE-EA: some members of their team are already using cpymad. Their interface to mad-x (ApplePy) is being interfaced with the control system (CESAR).</li>
+</ul>
+<h3 id="points-to-be-followed-up_12"><em>Points to be followed up</em></h3>
+<ul>
+<li>Issue with CrabCavity map in MAD-X should be easy to solve. Fixing the PTC side is more involved but not urgent.</li>
+<li>Issue in the error routines in the lhcmask is expected to be addressed in 2-3 weeks.</li>
+<li>The collimation team had problems in compiling sixtrack, which could be solved only by removing the DIST block. Tobias is aware of this and will follow it up. No particular urgency, as this is not blocking.</li>
+<li>The collimation team is investigating different behaviors of the scattering routines between Sixtrack 4 and Sixtrack 5.</li>
+<li>Andrea is trying to align spacecharge and beambeam development in MAD-X from F. Schmidt and collaborators to the latest version of the code.</li>
+<li>Herry Randal is investigating speed issues of MAD-X compared to older versions. The issue seems to be related to OpenMP.</li>
+</ul>
+<h2 id="5-february-2021">5 February  2021</h2>
+<p><strong>Present:</strong> F. Asvesta, D. Banerjee, R. Bruce, X. Buffat, L. Deniau, R. De Maria, J. Farmer, S. Furuseth, A. Gerbershagen, L. Giacomel, P. Hermes, G. Iadarola, S. Kostoglou, J.B. Lallement, A. Latina, N. Mounet, T. Persson, G. Sterbini, F. Van Der Veken.</p>
+<h3 id="information_11"><em>Information</em></h3>
+<ul>
+<li>Opened Mattermost channel</li>
+<li>Proposal (driven by BE-CSS) to create a structured interface between the ATS and IT managements, being discussed within ATS.</li>
+<li>Software developers from the BE-EA team joined the meeting. They will stay in contact for discussions related to mad-x and layout database. Riccardo and team might use their expertise with BEACH to understand discrepancies with respect to MAD-X.</li>
+<li>Tensor Processing Unit (TPU) made available experimentally by IT for machine learning applications (contact IT person: Ricardo Brito Da Roca)</li>
+<li>CALS was discontinued on Feb 1, replaced by NXCALS.</li>
+<li>Guido is working on a simple package to create trees of jobs.</li>
+<li>Andrea implemented long-range wakes in RFTrack for studying multibunch effects in FLASH. Synergy with PyHEADTAIL for parallelizing interpolations.</li>
+<li>Xavier implemented new feature in COMBI to have linearizeed beam-beam (for tests).</li>
+</ul>
+<h3 id="points-to-be-followed-up_13"><em>Points to be followed up</em></h3>
+<ul>
+<li>MAD-X issues to be followed up:<ul>
+<li>Calculation of crabcavity R and T matrix not correct in MADX and PTC. (Required to include crab cavities in the HL-LHC sequence!). Related GitHub issue <a href="https://github.com/MethodicalAcceleratorDesign/MAD-X/issues/981">here</a></li>
+<li>Current master segfaults on a long hl-lhc script when compiled with 'make'. Related GitHub issue <a href="https://github.com/MethodicalAcceleratorDesign/MAD-X/issues/982">here</a></li>
+<li>Tobias is reviewing the behavior of the solenoid.</li>
+</ul>
+</li>
+</ul>
+<h2 id="29-january-2021">29 January 2021</h2>
+<p><strong>Present:</strong> G. Iadarola, X. Buffat, L. Deniau, R. De Maria, J. Farmer, S. Furuseth, D. Gamba, S. Kostoglou, A. Latina, N. Nounet, K. Paraschou, G. Sterbini, F. Van Der Veken, T. Persson, F. Soubelet.</p>
+<h3 id="information_12"><em>Informatio</em>n**</h3>
+<ul>
+<li>Ilias and Guido prepared a page for the configuration of NXCALS (pyspark) on lxplus. It can be found <a href="../guides/nxcals_lxplus/">here</a>.</li>
+<li>The Timber web application does not work from outside the CERN GPN network.<ul>
+<li>To solve this, Riccardo and Davide have recipes to redirect the web traffic to the CERN network. Their bash scripts have been made available <a href="http://abpcomputing.web.cern.ch/guides/sshtunnel/">here</a>.</li>
+</ul>
+</li>
+<li>Example SixDesk study prepared by Sofia and Guido. First thoughts on how to extract components of general interest.</li>
+<li>Davide and Andrea are working on benchmarking of cooling modeling tools. A thorough exploration of the parameter space is revealing quite educative, leading to several improvements in RFTrack.</li>
+<li>Tracking library development: refactoring of GPU memory management is ongoing (Riccardo).</li>
+<li>Davide is refactoring the MATLAB interface to the controls infrastructure (PyJAPC is now used under the hood).</li>
+<li>John and the AWAKE team are comparing different PIC solvers in very challenging scenarios with many plasma buckets.</li>
+<li>New release of MAD-X coming soon to fix a bug related to particle losses in PTC-Track (Tobias).</li>
+<li>The CERN gitlab service now allows Continuos Integration tests on different GPUs (more info on Mattermost GPU).</li>
+<li>Work on restructuring and extension of DELPHI Vlasov solver is ongoing (Nicolas).</li>
+<li>GitHub actions allow build tests on several different platform (being used by MAD-X team).</li>
+<li>We will have a IT seminar on "Notebooks and Computing Workflows with IT services" on 26 Feb (<a href="https://indico.cern.ch/event/976158/">indico page</a>). </li>
+</ul>
+<h3 id="points-to-be-followed-up_14"><em>Points to be followed up</em></h3>
+<ul>
+<li>Reorganization of HTCondor e-groups (one e-group per section).</li>
+<li>Codes <a href="../housekeeping/">housekeeping page</a> to be completed with missing info.</li>
+<li>Some of the tools from the OMC suite could be of general interest (e.g. harpy, machine imperfection management and correction). <ul>
+<li>A first step could be to prepare a list of components that could be shared as individual packages, and start from the ones that are easier and more useful. </li>
+<li>An updated version of harpy should come within a few months.</li>
+</ul>
+</li>
+<li>In MAD-X/PTC, found a bug related to particles having mass that is not a multiple of the electron or the proton mass. Piotr might be able to look into that. </li>
+<li>There is a problem with imperfection simulation in the mask. If anybody needs simulations with imperfections before this is solved should contact Frederik.</li>
+<li>COMBI team worried about "unintended consequences" of migrating repository to common space. Forking instead of transferring the project should be safe.</li>
+</ul>
+<h2 id="22-january-2021">22 January 2021</h2>
+<p>(Kick-off meeting)</p>
+<p><strong>Present:</strong>  R. Bruce, R. De Maria, L. Deniau, G. Iadarola, J. Farmer, S. Furuseth, D. Gamba, L. Giacomel, A. Latina, J. Lettry, T. Persson, F. Van Der Veken.</p>
+<h3 id="points-to-be-followed-up_15"><em>Points to be followed up</em></h3>
+<ul>
+<li>Please review the <a href="../codespecific_activities/">list of objectives and activities</a> and provide feedback by Fri 29 Jan (comments already received from Roderik and Jacques &rarr; added to the webpage)</li>
+<li>Feel free to use the <a href="http://abpcomputing.web.cern.ch">abp-computing website</a> to share any technical information/guideline of general interest (including those related to controls/operation tools).</li>
+<li>Anybody interested in attending the meetings can self-subscribe the invitation list using <a href="../meetings/">this link</a>.</li>
+</ul>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../housekeeping/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Housekeeping" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Housekeeping
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../guides/softguide/" class="md-footer__link md-footer__link--next" aria-label="Next: Guidelines for ABP software" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Guidelines for ABP software
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 - Amin Sahebi
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/AminSahebi" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "search.highlight"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e1a181d9.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
