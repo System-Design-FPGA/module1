@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#guidelines-for-laboratory-projects-and-final-project" class="md-skip">
+        <a href="#guidelines-for-laboratory-projects-and-your-final-project" class="md-skip">
           Skip to content
         </a>
       
@@ -273,7 +273,7 @@
   
     <li class="md-nav__item">
       <a href="../../activities/" class="md-nav__link">
-        Code-specific
+        Activities
       </a>
     </li>
   
@@ -286,8 +286,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../notes/" class="md-nav__link">
-        Notes from meetings
+      <a href="../../trello/" class="md-nav__link">
+        Trello guide
       </a>
     </li>
   
@@ -412,7 +412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Coursework/" class="md-nav__link">
+      <a href="../Coursework.md" class="md-nav__link">
         Coursework
       </a>
     </li>
@@ -522,7 +522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openstack/" class="md-nav__link">
+      <a href="../exam/" class="md-nav__link">
         Exam
       </a>
     </li>
@@ -536,7 +536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openstackCC7/" class="md-nav__link">
+      <a href="../coursework/" class="md-nav__link">
         Coursework
       </a>
     </li>
@@ -550,7 +550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openstackCS8/" class="md-nav__link">
+      <a href="../finalproject/" class="md-nav__link">
         Final Project
       </a>
     </li>
@@ -598,7 +598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sshtunnel/" class="md-nav__link">
+      <a href="../references/" class="md-nav__link">
         Text Books
       </a>
     </li>
@@ -612,8 +612,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../vim_autocomplete/" class="md-nav__link">
-        Vivado References
+      <a href="../useful/" class="md-nav__link">
+        Other References
       </a>
     </li>
   
@@ -626,7 +626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../m1_macbook/" class="md-nav__link">
+      <a href="../HLS/" class="md-nav__link">
         HLS References
       </a>
     </li>
@@ -711,43 +711,46 @@
 </a>
 
 
-<h1 id="guidelines-for-laboratory-projects-and-final-project">Guidelines for Laboratory projects and Final Project</h1>
+<h1 id="guidelines-for-laboratory-projects-and-your-final-project">Guidelines for Laboratory projects and your Final Project</h1>
 <h2 id="minimal-requirements">Minimal requirements</h2>
 <p>Software projects should comply with the following basic guidelines:</p>
 <ol>
-<li>The source code should be hosted in an online <strong>git repository</strong>.<ul>
-<li>Common choices are:<ul>
-<li>The CERN GitLab platform (<a href="https://gitlab.cern.ch">https://gitlab.cern.ch</a>). Project hosted there can be public, restricted to people with a CERN account, or to smaller groups. Contributions (pull requests) can be submitted only by people having a CERN account.</li>
-<li>The GitHub platform (<a href="http://github.com">http://github.com</a>), which is used by millions of developers in thr world and hosts  several major open source projects (e.g. linux kernel, python). The source code for projects hosted on GitHub needs to be public, as CERN does not provide GitHub pro accounts. Contributions (pull requests) can be submitted by anybody.</li>
+<li>
+<p>The source code should be hosted in an online <strong>git repository</strong>.</p>
+<ul>
+<li>Our course git repository is: (<a href="https://github.com/System-Design-FPGA">https://github.com/System-Design-FPGA</a>)<ul>
+<li>You can clone the repository on your file system, please don't forgot to pull and keep it updated,</li>
+<li>The other solution is to use our github repository by web browser, once you need a file you can copy it from the web and
+copy it in your file system.</li>
+<li>Since viavdo project will create many small files, it is not a good practice to keep all viavdo project files on a git repo.</li>
 </ul>
 </li>
-<li>Production code should not be hosted in personal GitLab or GitHub profiles. GitHub organizations or GitLab groups should be used instead.</li>
 </ul>
 </li>
-<li>One or more <strong>"ready-to-run" examples</strong> should be made available in the repository, illustrating the main features of the code.<ul>
+<li>
+<p>One or more <strong>"ready-to-run" examples</strong> should be made available in the repository, illustrating the main features of the code.</p>
+<ul>
 <li>Please make sure that the example are still updated and working when making modifications to the code!</li>
 </ul>
 </li>
 <li>A simple <strong>"Getting started guide"</strong> should be made available, illustrating how to install the code and run an example. This can be provided as:<ul>
-<li>A simple README file within the repository in text or markdown (both GitLab and GitHub render mardkown files).</li>
-<li>For larger documentation an MkDocs site like the present one can be used.</li>
+<li>A simple README file within the repository in text or markdown.</li>
 <li>Alternatively the GiHub wiki space associated with the repository can be used.</li>
 </ul>
 </li>
 </ol>
 <p>A general paper describing a set of good computing practices that every researcher can adopt, regardless of their current level of computational skill is <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005510">"Good enough practices in scientific computing"</a>.</p>
 <h2 id="vivado-installation">Vivado installation</h2>
-<p>tbd.</p>
+<p>A hands-on to install vivado on Linux and Windows platform will be created, however,
+it is easier to connect through the Laboratory and use university credentials to use vivado.</p>
 <h2 id="hello-world-program">hello world! program</h2>
-<p>It is recommended to use version numbers associated to changes in the code.</p>
-<ul>
-<li>A convenient choice is to version numbers in the form X.Y.Z (e.g. v2.2.1) where X is the major version number (used only for major changes, typically backward incompatible), Y is the minor number, Z is used for bug-fixes and patches.</li>
-<li>Year based version numbers e.g. 2021.1.3 are a valid alternative.</li>
-</ul>
-<p>Versions should be associated to releases in GitHub or GitLab, making it easy to retrieve previous versions.</p>
+<p>For each session, there is going to be a simple hello world program,
+then there are some sample codes, you can try them by your own and based on
+hands-on tutorials.</p>
+<p>It is appreciated to discuss them and any other problem you faced within these exercises.</p>
 <h2 id="what-to-submit">What to submit?</h2>
-<p>The examples discussed above can provide a first-level set of checks to validate new versions.</p>
-<p>Automatic testing (e.g. <a href="https://en.wikipedia.org/wiki/Unit_testing">unit testing</a>) and <a href="https://docs.github.com/en/free-pro-team@latest/actions/guides/about-continuous-integration">continuos integration</a> are strongly encouraged.</p>
+<p>The example of how and what to submit is available in the repository,</p>
+<p>please read the instruction carefully and submit what is expected and try to avoid unnecessary efforts.</p>
 
               
             </article>
@@ -761,7 +764,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../notes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Notes from meetings" rel="prev">
+        <a href="../../trello/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Trello guide" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -770,20 +773,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Notes from meetings
+              Trello guide
             </div>
           </div>
         </a>
       
       
         
-        <a href="../Coursework/" class="md-footer__link md-footer__link--next" aria-label="Next: Coursework" rel="next">
+        <a href="../vivado/" class="md-footer__link md-footer__link--next" aria-label="Next: Create a vivado project" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Coursework
+              Create a vivado project
             </div>
           </div>
           <div class="md-footer__button md-icon">
